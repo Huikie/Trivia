@@ -1,5 +1,6 @@
 package com.example.daan.trivia;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -8,11 +9,22 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 
-public class GamePlay extends AppCompatActivity implements QuestionRequest.Callback {
+public class GamePlay extends AppCompatActivity implements QuestionRequest.Callback, HighscoresPostRequest.Callback{
+    @Override
+    public void gotpostHighscores(JSONObject highscores) {
+        Toast.makeText(this, highscores.toString(), Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void gotpostHighscoresError(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_LONG).show();
+    }
+
     ArrayList<Question> questions_array;
-    //int size = questions_array.size();
     int i = 0;
     int score;
     String answer;
@@ -25,8 +37,6 @@ public class GamePlay extends AppCompatActivity implements QuestionRequest.Callb
         QuestionRequest x = new QuestionRequest(this);
         x.getQuestions(this);
         //Toast.makeText(this, "Started", Toast.LENGTH_SHORT).show();
-
-
     }
 
     @Override
@@ -45,11 +55,11 @@ public class GamePlay extends AppCompatActivity implements QuestionRequest.Callb
     }
 
     public void givenAnswer(View view) {
-        Log.d("score", ""+score);
         TextView question = findViewById(R.id.question);
         TextView end_score = findViewById(R.id.endScore);
         Button False = findViewById(R.id.buttonFalse);
         Button True = findViewById(R.id.buttonTrue);
+        Button newGame = findViewById(R.id.newGame);
         if (i == 0) {
             correct_answer = questions_array.get(i).getCorrect_answer();
             i += 1;
@@ -72,7 +82,21 @@ public class GamePlay extends AppCompatActivity implements QuestionRequest.Callb
                 question.setText("");
                 False.setVisibility(View.INVISIBLE);
                 True.setVisibility(View.INVISIBLE);
+                newGame.setVisibility(View.VISIBLE);
                 end_score.setText("You answered " + questions_array.size() + " questions. Your score = " + score + " / " + questions_array.size());
+
+                HighscoresPostRequest x2 = new HighscoresPostRequest(this);
+                x2.postHighscores(this,""+score);
             }
+        }
+        public void toHighscore(View view){
+            Intent intent = new Intent(GamePlay.this, HighscoresActivity.class);
+            startActivity(intent);
+        }
+
+        public void newGame(View view){
+            Intent intent = new Intent(GamePlay.this, GamePlay.class);
+            finish();
+            startActivity(intent);
         }
     }
