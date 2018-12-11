@@ -7,8 +7,17 @@
     android:orientation="vertical"
     tools:context=".HighscoresActivity">
 
+    <TextView
+        android:id="@+id/highscores"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="12dp"
+        android:text="Leaderboard"
+        android:textSize="30sp" />
+
     <ListView
         android:id="@+id/highScores"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_gravity="center" />
 </LinearLayout>

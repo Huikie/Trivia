@@ -2,20 +2,29 @@ package com.example.daan.trivia;
 
 import java.io.Serializable;
 
-public class Highscore implements Serializable {
-    private String id, score;
+public class Highscore implements Serializable, Comparable<Highscore> {
 
-    public Highscore(String id, String score) {
-        this.id = id;
+    private String name, score;
+
+    public Highscore(String name, String score) {
+        this.name = name;
         this.score = score;
     }
 
-    public String getId() {
-        return id;
+    @Override
+    public int compareTo(Highscore other) {
+        int compareInt = this.score.compareTo(other.score);
+        if (compareInt < 0) return 1;
+        if (compareInt > 0) return -1;
+        return 0;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getScore() {

@@ -15,6 +15,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class HighscoresRequest implements Response.Listener<JSONArray>, Response.ErrorListener {
     Context context;
@@ -48,9 +49,9 @@ public class HighscoresRequest implements Response.Listener<JSONArray>, Response
         try{
             for (int i = 0; i < response.length(); i++){
                 JSONObject highscore_info = response.getJSONObject(i);
-                String id = highscore_info.getString("id");
-                String score = highscore_info.getString("description");
-                highscores.add(new Highscore(id, score));
+                String name = highscore_info.getString("name");
+                String score = highscore_info.getString("score");
+                highscores.add(new Highscore(name, score));
 
             }
             callback_activity.gotHighscores(highscores);

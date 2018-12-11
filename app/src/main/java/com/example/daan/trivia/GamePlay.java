@@ -15,8 +15,8 @@ import java.util.ArrayList;
 
 public class GamePlay extends AppCompatActivity implements QuestionRequest.Callback, HighscoresPostRequest.Callback{
     @Override
-    public void gotpostHighscores(JSONObject highscores) {
-        Toast.makeText(this, highscores.toString(), Toast.LENGTH_LONG).show();
+    public void gotpostHighscores(String highscores) {
+        Toast.makeText(this, highscores, Toast.LENGTH_LONG).show();
     }
 
     @Override
@@ -29,6 +29,7 @@ public class GamePlay extends AppCompatActivity implements QuestionRequest.Callb
     int score;
     String answer;
     String correct_answer;
+    String user_name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +37,9 @@ public class GamePlay extends AppCompatActivity implements QuestionRequest.Callb
         setContentView(R.layout.activity_game_play);
         QuestionRequest x = new QuestionRequest(this);
         x.getQuestions(this);
+        Intent intent = getIntent();
+        String name = intent.getStringExtra("name");
+        user_name = name;
         //Toast.makeText(this, "Started", Toast.LENGTH_SHORT).show();
     }
 
@@ -59,7 +63,6 @@ public class GamePlay extends AppCompatActivity implements QuestionRequest.Callb
         TextView end_score = findViewById(R.id.endScore);
         Button False = findViewById(R.id.buttonFalse);
         Button True = findViewById(R.id.buttonTrue);
-        Button newGame = findViewById(R.id.newGame);
         if (i == 0) {
             correct_answer = questions_array.get(i).getCorrect_answer();
             i += 1;
@@ -82,21 +85,14 @@ public class GamePlay extends AppCompatActivity implements QuestionRequest.Callb
                 question.setText("");
                 False.setVisibility(View.INVISIBLE);
                 True.setVisibility(View.INVISIBLE);
-                newGame.setVisibility(View.VISIBLE);
                 end_score.setText("You answered " + questions_array.size() + " questions. Your score = " + score + " / " + questions_array.size());
 
                 HighscoresPostRequest x2 = new HighscoresPostRequest(this);
-                x2.postHighscores(this,""+score);
+                x2.postHighscores(this,""+score, ""+user_name);
             }
         }
         public void toHighscore(View view){
             Intent intent = new Intent(GamePlay.this, HighscoresActivity.class);
-            startActivity(intent);
-        }
-
-        public void newGame(View view){
-            Intent intent = new Intent(GamePlay.this, GamePlay.class);
-            finish();
             startActivity(intent);
         }
     }

@@ -28,7 +28,7 @@ public class HighscoreAdapter extends ArrayAdapter<Highscore> {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.highscore, parent, false);
         }
         int index = position;
-        TextView id = convertView.findViewById(R.id.id);
+        TextView name = convertView.findViewById(R.id.id);
         TextView score = convertView.findViewById(R.id.score);
 //        ImageView image = convertView.findViewById(R.id.food_Image);
 //        TextView food_title = convertView.findViewById(R.id.food);
@@ -42,7 +42,7 @@ public class HighscoreAdapter extends ArrayAdapter<Highscore> {
 //
 //        food_title.setText(name);
 //        food_price.setText(price);
-        id.setText(highscore.get(index).getId());
+        name.setText(highscore.get(index).getName());
         score.setText(highscore.get(index).getScore());
         return convertView;
     }

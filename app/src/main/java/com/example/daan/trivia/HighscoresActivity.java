@@ -7,6 +7,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class HighscoresActivity extends AppCompatActivity implements HighscoresRequest.Callback{
 
@@ -16,10 +17,12 @@ public class HighscoresActivity extends AppCompatActivity implements HighscoresR
         setContentView(R.layout.activity_highscores);
         HighscoresRequest x = new HighscoresRequest(this);
         x.getHighscores(this);
+        //Toast.makeText(this, "Started", Toast.LENGTH_LONG).show();
 }
 
     @Override
     public void gotHighscores(ArrayList<Highscore> highscores) {
+        Collections.sort(highscores);
         Toast.makeText(this, highscores.toString(), Toast.LENGTH_LONG).show();
         HighscoreAdapter itemsAdapter = new HighscoreAdapter(this, R.layout.highscore, highscores);
         ListView highscore_list = findViewById(R.id.highScores);

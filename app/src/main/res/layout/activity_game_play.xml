@@ -10,7 +10,8 @@
     <TextView
         android:id="@+id/question"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:padding="12dp" />
 
     <Button
         android:id="@+id/buttonTrue"
@@ -42,13 +43,5 @@
         android:layout_height="wrap_content"
         android:onClick="toHighscore"
         android:text="Highscores" />
-
-    <Button
-        android:id="@+id/newGame"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="newGame"
-        android:text="New game"
-        android:visibility="invisible" />
 
 </LinearLayout>
