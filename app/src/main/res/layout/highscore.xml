@@ -7,13 +7,15 @@
         android:id="@+id/id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
+        android:layout_weight="1"
+        android:gravity="start"
         android:padding="12dp" />
 
     <TextView
         android:id="@+id/score"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
+        android:layout_weight="1"
+        android:gravity="end"
         android:padding="12dp" />
 </LinearLayout>

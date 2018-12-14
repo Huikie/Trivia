@@ -11,6 +11,8 @@ public class Highscore implements Serializable, Comparable<Highscore> {
         this.score = score;
     }
 
+    // This method defines a way to sort a list from highscores to lower scores. This method makes it possible to use Collections.sort() to sort the higscoreslist in the HighscoresActivity.
+    // I found this way of sorting a list in the following video: https://www.youtube.com/watch?v=hncd_WgF83c.
     @Override
     public int compareTo(Highscore other) {
         int compareInt = this.score.compareTo(other.score);

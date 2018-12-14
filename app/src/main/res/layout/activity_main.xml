@@ -20,12 +20,14 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="name"
-        android:inputType="textPersonName" />
+        android:inputType="textPersonName"
+        android:padding="12dp" />
 
     <Button
         android:id="@+id/startButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="startGame"
+        android:padding="12dp"
         android:text="Play!" />
 </LinearLayout>
