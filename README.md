@@ -1,7 +1,7 @@
 # Trivia
 
 ## Explanation of the app
-With this Trivia app you can play Trivia and there is a leaderboard that shows the scores of the users of the app. The questions asked in Trivia are generated via an API that I generated with the following API generator: https://opentdb.com/api_config.php.
+With this Trivia app you can play Trivia and there is a leaderboard that shows the scores of the users of the app. The questions asked in Trivia are generated via an API that I generated with the following API generator: https://opentdb.com/api_config.php. Leaderboard information is stored in a list on my own CS50 API: https://ide50-huikie.cs50.io:8080/list.
 
 ## Implemented extra's
 - I managed to show the Html elements that are in the questions from the API, so the questions are displayed nicely.
