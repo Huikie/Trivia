@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="12dp"
-        android:text="This is the Trivia app. In this app you can answer Trivia questions and reveive a score that is shared with other users of the app. Questions are of a different level, so answering a difficult question correctly will make you receive more points than answering a easy question." />
+        android:text="This is the Trivia app. In this app you can answer Trivia questions and reveive a score that is shared with other users of the app. Answering a question correctly will mean that you receive 1 point, while answering a question incorrectly won't give you any points. There are 10 questions to be answered. Enjoy playing!" />
 
     <EditText
         android:id="@+id/name"
