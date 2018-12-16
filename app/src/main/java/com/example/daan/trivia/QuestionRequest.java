@@ -20,14 +20,18 @@ public class QuestionRequest implements Response.Listener<JSONObject>, Response.
     Callback callback_activity;
     ArrayList<Question> questions = new ArrayList<>();
 
+    /**Method that makes a callback possible*/
     public interface Callback {
         void gotQuestions(ArrayList<Question> questions);
         void gotQuestionsError(String message);
     }
+
+    // Constructor.
     public QuestionRequest(Context context){
         this.context = context;
     }
 
+    /**Method that gets questions and question information from the API.*/
     public void getQuestions(Callback activity){
         callback_activity = activity;
         String json_url = "https://opentdb.com/api.php?amount=10&type=boolean";
@@ -35,12 +39,15 @@ public class QuestionRequest implements Response.Listener<JSONObject>, Response.
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(json_url, null, this,this);
         queue.add(jsonObjectRequest);
     }
+
     @Override
+    /**The questions aren't received successfully, an error message will be displayed.*/
     public void onErrorResponse(VolleyError error) {
         callback_activity.gotQuestionsError(error.getMessage());
     }
 
     @Override
+    /**The questions are received successfully and the questions are added to a ArrayList<Question>*/
     public void onResponse(JSONObject response) {
         try{
 

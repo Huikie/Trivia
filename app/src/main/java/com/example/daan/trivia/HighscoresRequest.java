@@ -19,15 +19,18 @@ public class HighscoresRequest implements Response.Listener<JSONArray>, Response
     Callback callback_activity;
     ArrayList<Highscore> highscores = new ArrayList<>();
 
+    /**Method that makes a callback possible.*/
     public interface Callback {
         void gotHighscores(ArrayList<Highscore> highscores);
         void gotHighscoresError(String message);
     }
 
+    // Constructor.
     public HighscoresRequest(Context context) {
         this.context = context;
     }
 
+    /**Method that gets the highscores from the API.*/
     public void getHighscores(Callback activity){
         callback_activity = activity;
         String json_url = "https://ide50-huikie.cs50.io:8080/list";
@@ -37,11 +40,13 @@ public class HighscoresRequest implements Response.Listener<JSONArray>, Response
     }
 
     @Override
+    /**The highscores aren't received successfully, an error message will be displayed.*/
     public void onErrorResponse(VolleyError error) {
         callback_activity.gotHighscoresError(error.getMessage());
     }
 
     @Override
+    /**The highscores are received successfully and will be added to the highscores ArrayList.*/
     public void onResponse(JSONArray response) {
         try{
             for (int i = 0; i < response.length(); i++){
@@ -57,4 +62,5 @@ public class HighscoresRequest implements Response.Listener<JSONArray>, Response
             System.out.println(e.toString());
         }
     }
+
 }

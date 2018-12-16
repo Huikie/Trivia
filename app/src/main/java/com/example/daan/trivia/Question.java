@@ -5,11 +5,13 @@ import java.io.Serializable;
 public class Question implements Serializable {
     private String question, correct_answer;
 
+    // Constructor
     public Question(String question, String correct_answer){
         this.question = question;
         this.correct_answer = correct_answer;
     }
 
+    // Getters & setters.
     public String getQuestion() {
         return question;
     }
@@ -22,7 +24,4 @@ public class Question implements Serializable {
         return correct_answer;
     }
 
-    public void setCorrect_answer(String correct_answer) {
-        this.correct_answer = correct_answer;
-    }
 }
