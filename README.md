@@ -5,8 +5,9 @@ With this Trivia app you can play Trivia and there is a leaderboard that shows t
 
 ## Implemented extra's
 - I managed to show the Html elements that are in the questions from the API, so the questions are displayed nicely.
+- The leaderboard is sorted from highscores to lowscores.
 
-This extra is shown in the section "Screenshots of the app".
+This extra's are shown in the section "Screenshots of the app".
 
 ## Screenshots of the app
 ![](https://github.com/Huikie/Trivia/blob/master/doc/begin_info.png)
