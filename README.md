@@ -11,5 +11,5 @@ This extra is shown in the section "Screenshots of the app".
 ![](https://github.com/Huikie/Trivia/blob/master/doc/begin.png)
 ![](https://github.com/Huikie/Trivia/blob/master/doc/question.png)
 ![](https://github.com/Huikie/Trivia/blob/master/doc/end_score.png)
-![](https://github.com/Huikie/Trivia/blob/master/doc/leader_board.png)
+![](https://github.com/Huikie/Trivia/blob/master/doc/leaderboard.png)
 
