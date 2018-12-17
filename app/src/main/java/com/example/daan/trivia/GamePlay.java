@@ -103,7 +103,8 @@ public class GamePlay extends AppCompatActivity implements QuestionRequest.Callb
                 question.setText("");
                 False.setVisibility(View.INVISIBLE);
                 True.setVisibility(View.INVISIBLE);
-                end_score.setText("You answered " + questions_array.size() + " questions. Your score = " + score + " / " + questions_array.size());
+                String newLine = System.getProperty("line.separator");
+                end_score.setText("- You answered " + questions_array.size() + " questions"+ newLine +"- Your score = " + score + " / " + questions_array.size());
 
                 HighscoresPostRequest x2 = new HighscoresPostRequest(this);
                 x2.postHighscores(this,""+score, ""+user_name);
