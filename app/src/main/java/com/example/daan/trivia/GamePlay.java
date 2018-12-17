@@ -16,7 +16,6 @@ public class GamePlay extends AppCompatActivity implements QuestionRequest.Callb
 
     @Override
     public void gotpostHighscores(String highscores) {
-        Toast.makeText(this, highscores, Toast.LENGTH_LONG).show();
     }
 
     @Override
@@ -52,7 +51,6 @@ public class GamePlay extends AppCompatActivity implements QuestionRequest.Callb
         question.setText(Html.fromHtml(questions_array.get(0).getQuestion()));
     }
 
-
     @Override
     /**The questions aren't received, so an error message will be displayed.*/
     public void gotQuestionsError(String message) {
@@ -70,17 +68,18 @@ public class GamePlay extends AppCompatActivity implements QuestionRequest.Callb
 
         if (i == 0) {
 
-            // For the first question the correct answer is defined.
+            // Define the correct answer for the first question.
             correct_answer = questions_array.get(i).getCorrect_answer();
 
             i += 1;
         }
+
         if (i > 0) {
 
             // Set the question TextView equal to the question from the API and make the Html display.
             question.setText(Html.fromHtml(questions_array.get(i).getQuestion()));
 
-            // For other question the correct answer is defined.
+            // Define the correct answer for the current question.
             correct_answer = questions_array.get(i).getCorrect_answer();
 
             i += 1;

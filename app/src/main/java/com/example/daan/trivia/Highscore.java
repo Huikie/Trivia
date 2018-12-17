@@ -17,7 +17,9 @@ public class Highscore implements Serializable, Comparable<Highscore> {
      * I found this way of sorting a list in the following video: https://www.youtube.com/watch?v=hncd_WgF83c.*/
     @Override
     public int compareTo(Highscore other) {
-        int compareInt = this.score.compareTo(other.score);
+        Integer other_score = Integer.parseInt(other.score);
+        Integer compared_score = Integer.parseInt(score);
+        int compareInt = compared_score.compareTo(other_score);
         if (compareInt < 0) return 1;
         if (compareInt > 0) return -1;
         return 0;
